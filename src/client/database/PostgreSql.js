@@ -13,14 +13,14 @@ const sequelize = new Sequelize(DATABASE_URL, {
 
 sequelize.authenticate()
     .then(() => {
-        console.log(`Connect database ${DATABASE_NAME} successfully`);
+        console.log(`[Database] ${DATABASE_NAME} successfully`);
     })
     .catch(err => {
-        console.error(`Unable to connect to the database: ${DATABASE_NAME}`, err);
+        console.error(`[Database] ${DATABASE_NAME} failed`, err);
     });
 
-const OcrFlowHistory = require('../models/OcrFlowHistoryModel')(sequelize, DataTypes);
-const OcrSdkHistory = require('../models/OcrSdkHistoryModel')(sequelize, DataTypes);
+const OcrFlowHistory = require('../../models/OcrFlowHistoryModel')(sequelize, DataTypes);
+const OcrSdkHistory = require('../../models/OcrSdkHistoryModel')(sequelize, DataTypes);
 
 module.exports = {
     sequelize,

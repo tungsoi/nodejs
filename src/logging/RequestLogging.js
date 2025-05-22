@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 
-const logDir = path.join(__dirname, '../../logs');
+const logDir = path.join(__dirname, '../logs');
 const appName = process.env.APP_NAME;
 const now = new Date();
 const timeStr = now.toISOString().replace(/[:.]/g, '-').replace('T', '_').slice(0, 19);
@@ -18,7 +18,7 @@ function writeLog(line) {
     });
 }
 
-function recordRequest(req, res, next) {
+function requestLogging(req, res, next) {
     const { method, originalUrl, body, query, params } = req;
     const logBase = {
         timestamp: new Date().toISOString(),
@@ -55,5 +55,5 @@ function recordRequest(req, res, next) {
 }
 
 module.exports = {
-    recordRequest
+    requestLogging
 };

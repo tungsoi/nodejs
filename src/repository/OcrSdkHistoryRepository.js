@@ -1,6 +1,6 @@
-const {OcrSdkHistory} = require('../client/PostgreSql');
+const {OcrSdkHistory} = require('../client/database/PostgreSql');
 const BaseRepository = require('./BaseRepository');
-const EcmClient = require('../client/EcmClient');
+const EcmClient = require('../client/thirdparty/EcmClient');
 
 
 class OcrSdkHistoryRepository extends BaseRepository {

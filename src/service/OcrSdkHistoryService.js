@@ -9,7 +9,6 @@ class OcrSdkHistoryService extends BaseService {
     }
 
     async getContentStream(documentId) {
-        // TODO: this service
         return ecmService.getContentStream(documentId);
     }
 }

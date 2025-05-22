@@ -1,7 +1,7 @@
 require('dotenv').config();
-const AxiosClient = require('./AxiosClient');
-const { URLS } = require('../common/Urls');
-const EcmResponse = require('../response/EcmResponse');
+const AxiosClient = require('../AxiosClient');
+const { URLS } = require('../../common/Urls');
+const EcmResponse = require('../../response/EcmResponse');
 
 class EcmClient {
     constructor(baseURL, contentType = 'application/json') {
@@ -12,7 +12,7 @@ class EcmClient {
 
     async getContentStream(documentId) {
         try {
-            const url = process.env.SIT_LOS_ECM + URLS.ECM_GET_DOCUMENT + "?documentId=" + documentId;
+            const url = process.env.SIT_LOS_ECM + URLS.ECM.GET_DOCUMENT + "?documentId=" + documentId;
             const response = await this.client.get(url);
             return new EcmResponse(response.data.result);
         } catch (error) {
