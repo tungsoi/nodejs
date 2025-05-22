@@ -19,8 +19,8 @@ class BaseRepository {
         return this.model.destroy({where: {id}});
     }
 
-    async getAll({limit = 10, order = [['id', 'DESC']]} = {}) {
-        return this.model.findAll({limit, order});
+    async getAll({limit = 10, order = [['id', 'DESC']], ...filters} = {}) {
+        return this.model.findAll({limit, order, where: filters});
     }
 }
 

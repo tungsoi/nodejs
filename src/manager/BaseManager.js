@@ -19,8 +19,8 @@ class BaseManager {
         return await this.service.delete(id);
     }
 
-    async getAll() {
-        return await this.service.getAll();
+    async getAll(options) {
+        return await this.service.getAll(options);
     }
 }
 

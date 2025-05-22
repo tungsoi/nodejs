@@ -1,5 +1,5 @@
-const {OcrFlowHistory} = require('../client/postgreSql');
-const BaseRepository = require('./baseRepository');
+const {OcrFlowHistory} = require('../client/PostgreSql');
+const BaseRepository = require('./BaseRepository');
 
 class OcrFlowHistoryRepository extends BaseRepository {
     constructor() {

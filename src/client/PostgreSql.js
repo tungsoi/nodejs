@@ -1,5 +1,6 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_NAME = process.env.DATABASE_NAME;
 const sequelize = new Sequelize(DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
@@ -12,12 +13,17 @@ const sequelize = new Sequelize(DATABASE_URL, {
 
 sequelize.authenticate()
     .then(() => {
-        console.log(`Connect ${DATABASE_URL} successfully`);
+        console.log(`Connect database ${DATABASE_NAME} successfully`);
     })
     .catch(err => {
-        console.error('Unable to connect to the database: ${DATABASE_URL}', err);
+        console.error(`Unable to connect to the database: ${DATABASE_NAME}`, err);
     });
 
 const OcrFlowHistory = require('../models/OcrFlowHistoryModel')(sequelize, DataTypes);
+const OcrSdkHistory = require('../models/OcrSdkHistoryModel')(sequelize, DataTypes);
 
-module.exports = {sequelize, OcrFlowHistory};
+module.exports = {
+    sequelize,
+    OcrFlowHistory,
+    OcrSdkHistory
+};

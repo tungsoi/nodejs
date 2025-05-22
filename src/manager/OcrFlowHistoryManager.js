@@ -1,5 +1,5 @@
-const BaseManager = require('./baseManager');
-const service = require('../service/ocrFlowHistoryService');
+const BaseManager = require('./BaseManager');
+const service = require('../service/OcrFlowHistoryService');
 
 class OcrFlowHistoryManager extends BaseManager {
   constructor() {
