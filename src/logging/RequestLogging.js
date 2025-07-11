@@ -7,6 +7,7 @@ const appName = process.env.APP_NAME;
 const now = new Date();
 const timeStr = now.toISOString().replace(/[:.]/g, '-').replace('T', '_').slice(0, 19);
 const logFile = path.join(logDir, `${appName}-${timeStr}.log`);
+const isLogging = process.env.APP_LOGGING;
 
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
@@ -31,7 +32,9 @@ function requestLogging(req, res, next) {
         body
     };
     const reqLog = JSON.stringify({ ...logBase, type: "request" });
-    console.log(reqLog);
+    if (isLogging === "true") {
+        console.log(reqLog);
+    }
     writeLog(reqLog);
 
     const oldSend = res.send;
@@ -47,7 +50,9 @@ function requestLogging(req, res, next) {
             type: "response",
             response: responseBody
         });
-        console.log(resLog);
+        if (isLogging === "true") {
+            console.log(resLog);
+        }
         writeLog(resLog);
         oldSend.apply(res, arguments);
     };

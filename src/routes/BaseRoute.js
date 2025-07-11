@@ -1,13 +1,29 @@
 const express = require('express');
 
-function baseRoute(controller, path = '/') {
+function baseRoute(controller, resourceName = '', routeList = []) {
     const router = express.Router();
 
-    router.post(path, controller.create);
-    router.get(`${path}:id`, controller.getById);
-    router.put(`${path}:id`, controller.update);
-    router.delete(`${path}:id`, controller.delete);
-    router.get(path, controller.getAll);
+    function addRoute(method, path) {
+        routeList.push({
+            method: method.toUpperCase(),
+            path: `${resourceName}${path}`
+        });
+    }
+
+    router.post('/', controller.create);
+    addRoute('post', '/');
+
+    router.get('/', controller.getAll);
+    addRoute('get', '/');
+
+    router.get('/:id', controller.getById);
+    addRoute('get', '/:id');
+
+    router.put('/:id', controller.update);
+    addRoute('put', '/:id');
+
+    router.delete('/:id', controller.delete);
+    addRoute('delete', '/:id');
 
     return router;
 }

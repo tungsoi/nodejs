@@ -1,17 +1,22 @@
-require('./src/client/MinioInstance');
+require('./src/instance/MinioInstance');
+require('./src/instance/RedisInstance');
 const express = require('express');
 const {requestLogging} = require('./src/logging/RequestLogging');
 const app = express();
-const { ROUTES } = require('./src/common/Routes');
+const routeList = [];
+const {ROUTES} = require('./src/common/Routes');
 
 app.use(express.json());
 app.use(requestLogging);
 
-const ocrFlowHistoryRoutes = require('./src/routes/OcrFlowHistoryRoute');
-const ocrSdkHistoryRoutes = require('./src/routes/OcrSdkHistoryRoute');
+const partnerRoutes = require('./src/routes/PartnerRoute')(routeList);
+const positionRoutes = require('./src/routes/PositionRoute')(routeList);
 
 app.use(express.json());
-app.use('/api' + ROUTES.OCR_FLOW_HISTORY, ocrFlowHistoryRoutes);
-app.use('/api' + ROUTES.OCR_SDK_HISTORY, ocrSdkHistoryRoutes);
+app.use(ROUTES.LOS_STAFFS.PARTNER, partnerRoutes);
+app.use(ROUTES.LOS_STAFFS.POSITION, positionRoutes);
 
-module.exports = app;
+module.exports = {
+    app,
+    routeList
+}

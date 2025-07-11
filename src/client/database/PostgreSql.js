@@ -1,14 +1,10 @@
+require('dotenv').config();
 const {Sequelize, DataTypes} = require('sequelize');
 const DATABASE_URL = process.env.DATABASE_URL;
 const DATABASE_NAME = process.env.DATABASE_NAME;
 const sequelize = new Sequelize(DATABASE_URL, {
     dialect: 'postgres',
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
-        },
-    },
+    logging: false,
 });
 
 sequelize.authenticate()
@@ -19,11 +15,11 @@ sequelize.authenticate()
         console.error(`[Database] ${DATABASE_NAME} failed`, err);
     });
 
-const OcrFlowHistory = require('../../models/OcrFlowHistoryModel')(sequelize, DataTypes);
-const OcrSdkHistory = require('../../models/OcrSdkHistoryModel')(sequelize, DataTypes);
+const Partner = require('../../models/PartnerModel')(sequelize, DataTypes);
+const Position = require('../../models/PositionModel')(sequelize, DataTypes);
 
 module.exports = {
     sequelize,
-    OcrFlowHistory,
-    OcrSdkHistory
+    Partner,
+    Position
 };

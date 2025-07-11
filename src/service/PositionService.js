@@ -1,11 +1,11 @@
 const BaseService = require('./BaseService');
-const repository = require('../repository/OcrFlowHistoryRepository');
+const repository = require('../repository/PositionRepository');
 const convertUtils = require('../utils/ConvertUtils');
 
-class OcrFlowHistoryService extends BaseService {
+class PositionService extends BaseService {
     constructor() {
         super(repository, convertUtils);
     }
 }
 
-module.exports = new OcrFlowHistoryService();
+module.exports = new PositionService();

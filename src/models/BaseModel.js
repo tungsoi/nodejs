@@ -1,4 +1,4 @@
-module.exports = (sequelize, DataTypes, tableName, attributes) => {
+module.exports = (sequelize, DataTypes, tableName, attributes, schema) => {
     return sequelize.define(tableName, {
         id: {
             type: DataTypes.INTEGER,
@@ -6,12 +6,12 @@ module.exports = (sequelize, DataTypes, tableName, attributes) => {
             autoIncrement: true,
         },
         ...attributes,
-        created_date: {
+        created_at: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
-        last_updated_date: {
+        updated_at: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
@@ -20,12 +20,13 @@ module.exports = (sequelize, DataTypes, tableName, attributes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        last_updated_by: {
+        updated_by: {
             type: DataTypes.STRING,
             allowNull: false,
         },
     }, {
-        tableName,
+        tableName: tableName,
+        schema: schema,
         timestamps: false,
     });
 };

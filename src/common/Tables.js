@@ -1,7 +1,7 @@
 const TABLES = {
-    LOS_EKYC: {
-        OCR_FLOW_HISTORY: 'ocr_flow_history',
-        OCR_SDK_HISTORY: 'ocr_sdk_history',
+    LOS_STAFFS: {
+        PARTNER: 'partners',
+        POSITION: 'positions'
     }
 }
 

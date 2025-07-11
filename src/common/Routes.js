@@ -1,8 +1,10 @@
 const ROUTES = {
-    OCR_FLOW_HISTORY: "/ocrFlowHistory",
-    OCR_SDK_HISTORY: "/ocrSdkHistory",
+    LOS_STAFFS: {
+        PARTNER: '/api/partners',
+        POSITION: '/api/positions'
+    }
 }
 
 module.exports = {
     ROUTES
-};
+}

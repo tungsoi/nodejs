@@ -1,58 +1,10 @@
 const baseModel = require('./BaseModel');
 const {TABLES} = require('../common/Tables');
-const TABLE_NAME = TABLES.OCR_FLOW_HISTORY;
+require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
-    return baseModel(sequelize, DataTypes, TABLE_NAME, {
-        app_code: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        step_code: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        client_channel: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        retry: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        open_sdk_time: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-        imgs: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        data_sign: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        data_base_64: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        log_id: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        message: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        server_version: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        object_raw: {
-            type: DataTypes.JSONB,
-            allowNull: false,
-        },
-        challenge_code: {
+    return baseModel(sequelize, DataTypes, TABLES.LOS_STAFFS.PARTNER, {
+        channel: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -60,9 +12,45 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        data_source: {
+        partner_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-    });
+        start_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        end_date: {
+            type: DataTypes.DATE,
+            allowNull: false,
+        },
+        business_line: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        account_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        account_number: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        bank_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        tax_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        disbursement_channel: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
+    }, process.env.DATABASE_SCHEMA);
 };
