@@ -7,22 +7,22 @@ module.exports = (sequelize, DataTypes, tableName, attributes, schema) => {
         },
         ...attributes,
         created_at: {
-            type: DataTypes.DATE,
-            allowNull: false,
+            type: DataTypes.TIME,
+            allowNull: true,
             defaultValue: DataTypes.NOW,
         },
         updated_at: {
-            type: DataTypes.DATE,
-            allowNull: false,
+            type: DataTypes.TIME,
+            allowNull: true,
             defaultValue: DataTypes.NOW,
         },
         created_by: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         updated_by: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
     }, {
         tableName: tableName,

@@ -1,25 +1,28 @@
+const {validator} = require("sequelize/lib/utils/validator-extras");
+
 class BaseService {
-    constructor(repository, convertUtils) {
+    constructor(repository, validator) {
         this.repository = repository;
-        this.convertUtils = convertUtils;
+        this.validator = validator;
     }
 
     async create(data) {
+        this.validator.validateCreate(data);
         return this.repository.create(data);
     }
 
     async getById(id) {
-        id = this.convertUtils ? this.convertUtils.toInt(id) : id;
+        this.validator.validateGetById(id);
         return this.repository.getById(id);
     }
 
     async update(id, data) {
-        id = this.convertUtils ? this.convertUtils.toInt(id) : id;
+        this.validator.validateUpdate(id, data);
         return this.repository.update(id, data);
     }
 
     async delete(id) {
-        id = this.convertUtils ? this.convertUtils.toInt(id) : id;
+        this.validator.validateDelete(id);
         return this.repository.delete(id);
     }
 

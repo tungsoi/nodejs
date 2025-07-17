@@ -1,5 +1,5 @@
 const BaseResponse = require('../response/BaseResponse');
-const {RESPONSE_MESSAGES} = require('../common/Constants');
+const {RESPONSE_MESSAGE, RESPONSE_STATUS} = require('../common/Constants');
 
 class BaseController {
     constructor(manager) {
@@ -9,10 +9,9 @@ class BaseController {
     create = async (req, res) => {
         try {
             const newRecord = await this.manager.create(req.body);
-            BaseResponse.success(res, newRecord, RESPONSE_MESSAGES.RECORD_CREATED, 201);
+            BaseResponse.success(res, newRecord, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
-            console.error('Error creating record:', error);
-            BaseResponse.error(res, RESPONSE_MESSAGES.INTERNAL_ERROR);
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
 
@@ -21,12 +20,11 @@ class BaseController {
             const {id} = req.params;
             const record = await this.manager.getById(id);
             if (!record) {
-                return BaseResponse.error(res, RESPONSE_MESSAGES.RECORD_NOT_FOUND, 404);
+                return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
             }
-            BaseResponse.success(res, record, RESPONSE_MESSAGES.SUCCESS);
+            BaseResponse.success(res, record, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
-            console.error('Error fetching record:', error);
-            BaseResponse.error(res, RESPONSE_MESSAGES.INTERNAL_ERROR);
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
 
@@ -35,12 +33,11 @@ class BaseController {
             const {id} = req.params;
             const [updated] = await this.manager.update(id, req.body);
             if (!updated) {
-                return BaseResponse.error(res, RESPONSE_MESSAGES.RECORD_NOT_FOUND, 404);
+                return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
             }
-            BaseResponse.success(res, null, RESPONSE_MESSAGES.RECORD_UPDATED);
+            BaseResponse.success(res, updated, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
-            console.error('Error updating record:', error);
-            BaseResponse.error(res, RESPONSE_MESSAGES.INTERNAL_ERROR);
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
 
@@ -49,12 +46,11 @@ class BaseController {
             const {id} = req.params;
             const deleted = await this.manager.delete(id);
             if (!deleted) {
-                return BaseResponse.error(res, RESPONSE_MESSAGES.RECORD_NOT_FOUND, 404);
+                return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
             }
-            BaseResponse.success(res, null, RESPONSE_MESSAGES.RECORD_DELETED);
+            BaseResponse.success(res, deleted, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
-            console.error('Error deleting record:', error);
-            BaseResponse.error(res, RESPONSE_MESSAGES.INTERNAL_ERROR);
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
 
@@ -67,10 +63,9 @@ class BaseController {
                 ...filters
             };
             const results = await this.manager.getAll(options);
-            BaseResponse.success(res, results, RESPONSE_MESSAGES.SUCCESS);
+            BaseResponse.success(res, results, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
-            console.error('Error fetching records:', error);
-            BaseResponse.error(res, RESPONSE_MESSAGES.INTERNAL_ERROR);
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
 }

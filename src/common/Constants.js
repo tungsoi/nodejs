@@ -1,10 +1,11 @@
-const RESPONSE_MESSAGES = {
+const RESPONSE_MESSAGE = {
     SUCCESS: 'Success',
     RECORD_CREATED: 'Record created',
     RECORD_UPDATED: 'Record updated successfully',
     RECORD_DELETED: 'Record deleted successfully',
     RECORD_NOT_FOUND: 'Record not found',
     INTERNAL_ERROR: 'Internal server error',
+    BAD_REQUEST: 'Bad request',
 };
 
 const RESPONSE_STATUS = {
@@ -19,6 +20,6 @@ const RESPONSE_STATUS = {
 }
 
 module.exports = {
-    RESPONSE_MESSAGES,
+    RESPONSE_MESSAGE,
     RESPONSE_STATUS
 };

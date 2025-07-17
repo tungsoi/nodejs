@@ -15,11 +15,9 @@ sequelize.authenticate()
         console.error(`[Database] ${DATABASE_NAME} failed`, err);
     });
 
-const Partner = require('../../models/PartnerModel')(sequelize, DataTypes);
-const Position = require('../../models/PositionModel')(sequelize, DataTypes);
+const Category = require('../../models/CategoryModel')(sequelize, DataTypes);
 
 module.exports = {
     sequelize,
-    Partner,
-    Position
+    Category,
 };
