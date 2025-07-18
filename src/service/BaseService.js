@@ -1,9 +1,10 @@
-const {validator} = require("sequelize/lib/utils/validator-extras");
+const {mapToDto} = require('../utils/MappingUtils');
 
 class BaseService {
-    constructor(repository, validator) {
+    constructor(repository, validator, baseDto) {
         this.repository = repository;
         this.validator = validator;
+        this.baseDto = baseDto;
     }
 
     async create(data) {
@@ -13,7 +14,8 @@ class BaseService {
 
     async getById(id) {
         this.validator.validateGetById(id);
-        return this.repository.getById(id);
+        const data = await this.repository.getById(id);
+        return mapToDto(this.baseDto, data);
     }
 
     async update(id, data) {
