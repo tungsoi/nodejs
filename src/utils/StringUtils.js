@@ -52,6 +52,10 @@ const truncate = (str, length, ending = '...') =>
         ? str.substring(0, length - ending.length) + ending
         : str;
 
+const equal = (str1, str2) => {
+    return (str1 === str2) || (str1?.toString() === str2?.toString());
+}
+
 module.exports = {
     capitalize,
     camelCase,
@@ -66,4 +70,5 @@ module.exports = {
     contains,
     repeat,
     truncate,
+    equal
 };

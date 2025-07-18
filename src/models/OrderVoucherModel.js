@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         applied_amount: {
-            type: DataTypes.NUMERIC,
+            type: DataTypes.NUMBER,
             allowNull: true,
         }
     }, process.env.DATABASE_SCHEMA);

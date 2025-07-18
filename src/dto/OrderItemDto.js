@@ -7,7 +7,7 @@ class OrderItemDto extends BaseDto {
         this.product_id = orderItem.product_id;
         this.name = orderItem.product.name;
         this.description = orderItem.product.description;
-        this.price_raw = orderItem.product.price;
+        this.real_price = orderItem.product.price;
         this.category = orderItem.product.category;
     }
 }

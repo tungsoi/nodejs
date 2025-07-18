@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chi tiết đơn hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 15px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #0070c0;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            min-width: 110px;
+        }
+
+        .row {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e6f2ff;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 13px;
+                padding: 6px;
+            }
+
+            .label {
+                min-width: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Đơn hàng #SG-000001</h1>
+
+<div class="section">
+    <h2>Thông tin đơn hàng</h2>
+    <div class="row"><span class="label">Mã đơn:</span> SG-000001</div>
+    <div class="row"><span class="label">Trạng thái:</span> Nháp</div>
+    <div class="row"><span class="label">Tổng tiền:</span> 5.020.000 đ</div>
+    <div class="row"><span class="label">Ngày tạo:</span> 18/07/2025 11:58</div>
+</div>
+
+<div class="section">
+    <h2>Khách hàng</h2>
+    <div class="row"><span class="label">Họ tên:</span> sample full_name</div>
+    <div class="row"><span class="label">SĐT:</span> 0123456789</div>
+    <div class="row"><span class="label">Địa chỉ:</span> sample address</div>
+</div>
+
+<div class="section">
+    <h2>Voucher</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Loại</th>
+            <th>Số tiền</th>
+            <th>Trạng thái</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sample code</td>
+            <td>Giảm giá trực tiếp</td>
+            <td>10.000 đ</td>
+            <td>1</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h2>Vận chuyển</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Phương thức</th>
+            <th>Địa chỉ</th>
+            <th>Chi phí</th>
+            <th>Mã vận đơn</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sample shipping_method</td>
+            <td>sample shipping_address</td>
+            <td>30.000 đ</td>
+            <td>sample tracking_number</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h2>Sản phẩm</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>sample name</td>
+            <td>10</td>
+            <td>500.000 đ</td>
+            <td>5.000.000 đ</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -8,16 +8,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
-        shipping_method: {
+        method: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        shipping_address: {
+        address: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        shipping_cost: {
-            type: DataTypes.NUMERIC,
+        cost: {
+            type: DataTypes.NUMBER,
             allowNull: true,
         },
         tracking_number: {

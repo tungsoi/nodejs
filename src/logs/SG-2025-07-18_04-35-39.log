@@ -1,6 +1,0 @@
-{"timestamp":"2025-07-18T04:35:48.184Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"request"}
-{"timestamp":"2025-07-18T04:35:48.184Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"response","response":{"status":200,"message":"Success","data":[]}}
-{"timestamp":"2025-07-18T04:38:49.998Z","level":"info","service":"ocr-service","method":"POST","url":"/api/module/create","params":{},"query":{},"type":"request"}
-{"timestamp":"2025-07-18T04:38:49.998Z","level":"info","service":"ocr-service","method":"POST","url":"/api/module/create","params":{},"query":{},"type":"response","response":{"success":true,"message":"Module created successfully"}}
-{"timestamp":"2025-07-18T04:39:07.048Z","level":"info","service":"ocr-service","method":"POST","url":"/api/module/create","params":{},"query":{},"type":"request"}
-{"timestamp":"2025-07-18T04:39:07.048Z","level":"info","service":"ocr-service","method":"POST","url":"/api/module/create","params":{},"query":{},"type":"response","response":{"success":true,"message":"Module created successfully"}}

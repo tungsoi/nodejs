@@ -29,7 +29,8 @@ class BaseService {
     }
 
     async getAll(options) {
-        return this.repository.getAll(options);
+        const data = await this.repository.getAll(options);
+        return mapToDto(this.baseDto, data);
     }
 }
 

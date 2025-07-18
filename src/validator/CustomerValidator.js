@@ -17,6 +17,10 @@ class CustomerValidator extends BaseValidator {
     validateDelete(id) {
         super.validateDelete(id);
     }
+
+    validateGetOrderByCustomerId(id) {
+        // TODO
+    }
 }
 
 module.exports = new CustomerValidator();

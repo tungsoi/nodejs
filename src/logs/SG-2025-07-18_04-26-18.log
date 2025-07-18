@@ -1,4 +1,0 @@
-{"timestamp":"2025-07-18T04:26:28.231Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"request"}
-{"timestamp":"2025-07-18T04:26:28.231Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"response","response":{"status":400,"message":"Bad request","error":"column \"created_at\" does not exist"}}
-{"timestamp":"2025-07-18T04:28:23.697Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"request"}
-{"timestamp":"2025-07-18T04:28:23.697Z","level":"info","service":"ocr-service","method":"GET","url":"/api/user","params":{},"query":{},"type":"response","response":{"status":200,"message":"Success","data":[]}}
