@@ -4,6 +4,17 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.ORDER, {
-        // TODO
+        customer_id: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        },
+        total_price: {
+            type: DataTypes.NUMERIC,
+            allowNull: false,
+        },
+        status: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        }
     }, process.env.DATABASE_SCHEMA);
 };

@@ -4,6 +4,21 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.USER, {
-        // TODO
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        is_active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+        },
     }, process.env.DATABASE_SCHEMA);
 };

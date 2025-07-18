@@ -1,4 +1,6 @@
 const ROUTES = {
+    CART_ITEM: '/api/cartItem',
+    CART: '/api/cart',
     USER: '/api/user',
     CUSTOMER: '/api/customer',
     ORDER_SHIPPING: '/api/orderShipping',

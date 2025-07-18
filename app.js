@@ -14,6 +14,8 @@ routeList.push({
 });
 
 const categoryRoutes = require('./src/routes/CategoryRoute')(routeList);
+const cartItemRoutes = require('./src/routes/CartItemRoute')(routeList);
+const cartRoutes = require('./src/routes/CartRoute')(routeList);
 const userRoutes = require('./src/routes/UserRoute')(routeList);
 const customerRoutes = require('./src/routes/CustomerRoute')(routeList);
 const orderShippingRoutes = require('./src/routes/OrderShippingRoute')(routeList);
@@ -26,6 +28,8 @@ const voucherRoutes = require('./src/routes/VoucherRoute')(routeList);
 app.use(express.json());
 app.use(ROUTES.MODULE, moduleRoutes);
 app.use(ROUTES.CATEGORY, categoryRoutes);
+app.use(ROUTES.CART_ITEM, cartItemRoutes);
+app.use(ROUTES.CART, cartRoutes);
 app.use(ROUTES.USER, userRoutes);
 app.use(ROUTES.CUSTOMER, customerRoutes);
 app.use(ROUTES.ORDER_SHIPPING, orderShippingRoutes);

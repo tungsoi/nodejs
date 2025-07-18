@@ -1,4 +1,6 @@
 const TABLES = {
+    CART_ITEM: 'cart_items',
+    CART: 'carts',
     USER: 'users',
     CUSTOMER: 'customers',
     ORDER_SHIPPING: 'order_shippings',

@@ -24,5 +24,7 @@ const OrderVoucher = require('../../models/OrderVoucherModel')(sequelize, DataTy
 const OrderShipping = require('../../models/OrderShippingModel')(sequelize, DataTypes);
 const Customer = require('../../models/CustomerModel')(sequelize, DataTypes);
 const User = require('../../models/UserModel')(sequelize, DataTypes);
+const Cart = require('../../models/CartModel')(sequelize, DataTypes);
+const CartItem = require('../../models/CartItemModel')(sequelize, DataTypes);
 
-module.exports = {sequelize, Category, Voucher, Product, Order, OrderItem, OrderVoucher, OrderShipping, Customer, User};
+module.exports = {sequelize, Category, Voucher, Product, Order, OrderItem, OrderVoucher, OrderShipping, Customer, User, Cart , CartItem };
