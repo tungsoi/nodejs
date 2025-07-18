@@ -17,4 +17,12 @@ sequelize.authenticate()
 
 const Category = require('../../models/CategoryModel')(sequelize, DataTypes);
 const Voucher = require('../../models/VoucherModel')(sequelize, DataTypes);
-module.exports = {sequelize, Category , Voucher };
+const Product = require('../../models/ProductModel')(sequelize, DataTypes);
+const Order = require('../../models/OrderModel')(sequelize, DataTypes);
+const OrderItem = require('../../models/OrderItemModel')(sequelize, DataTypes);
+const OrderVoucher = require('../../models/OrderVoucherModel')(sequelize, DataTypes);
+const OrderShipping = require('../../models/OrderShippingModel')(sequelize, DataTypes);
+const Customer = require('../../models/CustomerModel')(sequelize, DataTypes);
+const User = require('../../models/UserModel')(sequelize, DataTypes);
+
+module.exports = {sequelize, Category, Voucher, Product, Order, OrderItem, OrderVoucher, OrderShipping, Customer, User};

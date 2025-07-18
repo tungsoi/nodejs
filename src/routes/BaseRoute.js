@@ -5,6 +5,7 @@ function baseRoute(controller, resourceName = '', routeList = []) {
 
     function addRoute(method, path) {
         routeList.push({
+            module: controller,
             method: method.toUpperCase(),
             path: `${resourceName}${path}`
         });
