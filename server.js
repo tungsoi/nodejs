@@ -7,6 +7,5 @@ const server = http.createServer(app);
 
 server.listen(PORT, () => {
     console.log(`${APP_NAME} run on http://localhost:${PORT}`);
-    console.log('=== ROUTES ===');
     console.table(routeList);
 });
