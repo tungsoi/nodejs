@@ -1,9 +1,7 @@
 const ROUTES = {
-    LOS_STAFFS: {
-        PARTNER: '/api/partners',
-        POSITION: '/api/positions'
-    },
+    VOUCHER: '/api/voucher',
     CATEGORY: '/api/category',
+    MODULE: '/api/module'
 }
 
 module.exports = {

@@ -1,9 +1,6 @@
 const TABLES = {
-    LOS_STAFFS: {
-        PARTNER: 'partners',
-        POSITION: 'positions'
-    },
-    CATEGORY: 'categories',
+    VOUCHER: 'vouchers',
+    CATEGORY: 'categories'
 }
 
 module.exports = {

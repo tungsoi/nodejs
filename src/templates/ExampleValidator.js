@@ -1,6 +1,6 @@
 const BaseValidator = require("./BaseValidator");
 
-class CategoryValidator extends BaseValidator {
+class ExampleValidator extends BaseValidator {
     validateCreate(data) {
         super.validateCreate(data);
         // throw new Error('Category must be defined');
@@ -19,4 +19,4 @@ class CategoryValidator extends BaseValidator {
     }
 }
 
-module.exports = new CategoryValidator();
+module.exports = new ExampleValidator();

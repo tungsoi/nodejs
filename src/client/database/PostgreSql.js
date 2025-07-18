@@ -16,8 +16,5 @@ sequelize.authenticate()
     });
 
 const Category = require('../../models/CategoryModel')(sequelize, DataTypes);
-
-module.exports = {
-    sequelize,
-    Category,
-};
+const Voucher = require('../../models/VoucherModel')(sequelize, DataTypes);
+module.exports = {sequelize, Category , Voucher };
