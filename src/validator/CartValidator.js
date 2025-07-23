@@ -17,6 +17,9 @@ class CartValidator extends BaseValidator {
     validateDelete(id) {
         super.validateDelete(id);
     }
+
+    validateGetCartByUserId(userId) {}
+    validateGetCartByGuestToken(userId) {}
 }
 
 module.exports = new CartValidator();

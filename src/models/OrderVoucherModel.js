@@ -4,15 +4,15 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.ORDER_VOUCHER, {
-        order_id: {
+        orderId: {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
-        voucher_id: {
+        voucherId: {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
-        applied_amount: {
+        appliedAmount: {
             type: DataTypes.NUMBER,
             allowNull: true,
         }

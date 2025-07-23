@@ -13,5 +13,13 @@ module.exports = function (routeList) {
         path: ROUTES.ORDER + getOrderByCustomerId
     });
 
+    const initOrder = '/init';
+    router.post(initOrder, controller.initOrder);
+    routeList.push({
+        module: controller,
+        method: 'POST',
+        path: ROUTES.ORDER + initOrder
+    });
+
     return router;
 };

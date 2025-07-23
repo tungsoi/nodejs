@@ -17,6 +17,8 @@ class CartItemValidator extends BaseValidator {
     validateDelete(id) {
         super.validateDelete(id);
     }
+
+    validateGetByCartId(cartId) {}
 }
 
 module.exports = new CartItemValidator();

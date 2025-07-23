@@ -15,7 +15,7 @@ class OrderItemService extends BaseService {
         const data = await this.repository.getByOrderId(id);
         if (!isEmpty(data)) {
             for (const item of data) {
-                item.product = await productService.getById(item.product_id);
+                item.product = await productService.getById(item.productId);
             }
         }
         return mapToDto(this.baseDto, data);

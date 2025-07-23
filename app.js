@@ -3,7 +3,8 @@ const {requestLogging} = require('./src/logging/RequestLogging');
 const app = express();
 const routeList = [];
 const {ROUTES} = require('./src/common/Routes');
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 app.use(requestLogging);
 
 const moduleRoutes = require('./src/routes/ModuleRoute');
@@ -28,8 +29,11 @@ const voucherRoutes = require('./src/routes/VoucherRoute')(routeList);
 app.use(express.json());
 app.use(ROUTES.MODULE, moduleRoutes);
 app.use(ROUTES.CATEGORY, categoryRoutes);
-app.use(ROUTES.CART_ITEM, cartItemRoutes);
-app.use(ROUTES.CART, cartRoutes);
+
+const checkGuestToken = require('./src/middleware/CheckGuestToken');
+app.use(ROUTES.CART_ITEM, checkGuestToken, cartItemRoutes);
+app.use(ROUTES.CART, checkGuestToken, cartRoutes);
+
 app.use(ROUTES.USER, userRoutes);
 app.use(ROUTES.CUSTOMER, customerRoutes);
 app.use(ROUTES.ORDER_SHIPPING, orderShippingRoutes);

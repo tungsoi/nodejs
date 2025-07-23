@@ -1,6 +1,6 @@
 class BaseDto {
     constructor(entity, excludedFields = []) {
-        const allFields = ['id', 'created_at', 'created_by', 'updated_at', 'updated_by'];
+        const allFields = ['id', 'createdAt', 'createdBy', 'updatedAt', 'updatedBy'];
         for (const field of allFields) {
             if (!excludedFields.includes(field)) {
                 this[field] = entity[field];

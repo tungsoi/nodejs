@@ -20,6 +20,18 @@ class OrderController extends BaseController {
             BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
         }
     };
+
+    initOrder = async (req, res) => {
+        try {
+            const record = await this.manager.initOrder(req.body);
+            if (!record) {
+                return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
+            }
+            BaseResponse.success(res, record, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
+        } catch (error) {
+            BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
+        }
+    }
 }
 
 module.exports = new OrderController();

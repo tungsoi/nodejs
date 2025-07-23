@@ -4,7 +4,7 @@ const DATABASE_URL = process.env.DATABASE_URL;
 const DATABASE_NAME = process.env.DATABASE_NAME;
 const sequelize = new Sequelize(DATABASE_URL, {
     dialect: 'postgres',
-    logging: false,
+    logging: true,
 });
 
 sequelize.authenticate()

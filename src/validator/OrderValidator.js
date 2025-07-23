@@ -1,4 +1,5 @@
 const BaseValidator = require("./BaseValidator");
+const {isEmpty} = require("../utils/StringUtils");
 
 class OrderValidator extends BaseValidator {
     validateCreate(data) {
@@ -16,6 +17,12 @@ class OrderValidator extends BaseValidator {
 
     validateDelete(id) {
         super.validateDelete(id);
+    }
+
+    validateInitOrder(data) {
+        if (isEmpty(data.guestToken)) {
+            throw new Error("Required guestToken is empty");
+        }
     }
 }
 

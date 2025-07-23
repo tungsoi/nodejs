@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Đơn hàng của bạn</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <!-- Framework7 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/framework7/5.1.2/css/framework7.min.css" />
+    <style>
+        .item-subtitle {
+            font-size: 13px;
+        }
+        .item-text {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<!-- App Root -->
+<div id="app">
+    <div class="view view-main view-init">
+        <div class="page">
+            <!-- Navbar -->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="title">Đơn hàng</div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="page-content">
+                <div class="list media-list">
+                    <ul>
+                        <li>
+                            <a href="#" class="item-link item-content">
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">SG-000001</div>
+                                        <div class="item-after">Nháp</div>
+                                    </div>
+                                    <div class="item-subtitle">Tổng tiền: 10.020.000đ</div>
+                                    <div class="item-text">3 sản phẩm · Viettel · Voucher: DEF930</div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- Thêm đơn khác nếu muốn -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Framework7 JS (Load sau cùng) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/framework7/5.1.2/js/framework7.min.js" integrity="sha512-o+4OTkULRHhBkQRC9qEALs5OscxTBH1vloPm7L2vdbQx5ZJJpqxU3+8L3a6dmN01xB8htwmy6ZjmoMyiPfDc5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const app = new Framework7({
+        root: '#app',
+    });
+</script>
+</body>
+</html>

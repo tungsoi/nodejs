@@ -4,11 +4,11 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.CART_ITEM, {
-        cart_id: {
+        cartId: {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
-        product_id: {
+        productId: {
             type: DataTypes.NUMBER,
             allowNull: false,
         },

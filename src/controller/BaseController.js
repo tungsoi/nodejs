@@ -8,7 +8,11 @@ class BaseController {
 
     create = async (req, res) => {
         try {
-            const newRecord = await this.manager.create(req.body);
+            const body = req.body;
+            if (req.guestToken) {
+                body.guestToken = req.guestToken;
+            }
+            const newRecord = await this.manager.create(body);
             BaseResponse.success(res, newRecord, RESPONSE_MESSAGE.SUCCESS, RESPONSE_STATUS.SUCCESS);
         } catch (error) {
             BaseResponse.error(res, RESPONSE_MESSAGE.BAD_REQUEST, RESPONSE_STATUS.BAD_REQUEST, error.message);
@@ -31,7 +35,11 @@ class BaseController {
     update = async (req, res) => {
         try {
             const {id} = req.params;
-            const [updated] = await this.manager.update(id, req.body);
+            const body = req.body;
+            if (req.guestToken) {
+                body.guestToken = req.guestToken;
+            }
+            const [updated] = await this.manager.update(id, body);
             if (!updated) {
                 return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
             }

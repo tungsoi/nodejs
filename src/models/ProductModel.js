@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.NUMBER,
             allowNull: true,
         },
-        category_id: {
+        categoryId: {
             type: DataTypes.NUMBER,
             allowNull: true,
         }

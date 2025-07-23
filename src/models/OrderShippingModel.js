@@ -4,7 +4,7 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.ORDER_SHIPPING, {
-        order_id: {
+        orderId: {
             type: DataTypes.NUMBER,
             allowNull: false,
         },
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.NUMBER,
             allowNull: true,
         },
-        tracking_number: {
+        trackingNumber: {
             type: DataTypes.STRING,
             allowNull: true,
         },

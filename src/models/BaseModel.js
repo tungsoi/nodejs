@@ -1,3 +1,4 @@
+const dayjs = require('dayjs');
 module.exports = (sequelize, DataTypes, tableName, attributes, schema) => {
     return sequelize.define(tableName, {
         id: {
@@ -6,21 +7,29 @@ module.exports = (sequelize, DataTypes, tableName, attributes, schema) => {
             autoIncrement: true,
         },
         ...attributes,
-        created_at: {
+        createdAt: {
             type: DataTypes.TIME,
             allowNull: true,
             defaultValue: DataTypes.NOW,
+            get() {
+                const val = this.getDataValue('createdAt');
+                return val ? dayjs(val).format('HH:mm DD-MM-YYYY') : null;
+            }
         },
-        updated_at: {
+        updatedAt: {
             type: DataTypes.TIME,
             allowNull: true,
             defaultValue: DataTypes.NOW,
+            get() {
+                const val = this.getDataValue('createdAt');
+                return val ? dayjs(val).format('HH:mm DD-MM-YYYY') : null;
+            }
         },
-        created_by: {
+        createdBy: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        updated_by: {
+        updatedBy: {
             type: DataTypes.STRING,
             allowNull: true,
         },
@@ -28,5 +37,6 @@ module.exports = (sequelize, DataTypes, tableName, attributes, schema) => {
         tableName: tableName,
         schema: schema,
         timestamps: false,
+        underscored: true
     });
 };

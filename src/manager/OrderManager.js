@@ -9,6 +9,10 @@ class OrderManager extends BaseManager {
     async getOrderByCustomerId(id) {
         return await this.service.getOrderByCustomerId(id);
     }
+
+    async initOrder(data) {
+        return await this.service.initOrder(data);
+    }
 }
 
 module.exports = new OrderManager();

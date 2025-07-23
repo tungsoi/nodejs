@@ -26,6 +26,7 @@ const VOUCHER_TYPE = {
 
 const ORDER_STATUS = {
     DRAFF: "Nháp",
+    NEW: "Đơn hàng mới",
     STAKED: "Đã cọc",
     SHIPPING: "Đang vận chuyển",
     IN_DEBT: "Còn nợ",

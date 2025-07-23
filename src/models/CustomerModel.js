@@ -4,7 +4,7 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.CUSTOMER, {
-        full_name: {
+        fullName: {
             type: DataTypes.STRING,
             allowNull: false,
         },

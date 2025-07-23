@@ -4,13 +4,13 @@ require('dotenv').config();
 
 module.exports = (sequelize, DataTypes) => {
     return baseModel(sequelize, DataTypes, TABLES.CART, {
-        user_id: {
+        userId: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
-        guest_token: {
+        guestToken: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         }
     }, process.env.DATABASE_SCHEMA);
 };
