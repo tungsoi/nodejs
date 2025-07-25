@@ -1,11 +1,22 @@
+require('dotenv').config();
 const express = require('express');
 const {requestLogging} = require('./src/logging/RequestLogging');
 const app = express();
 const routeList = [];
 const {ROUTES} = require('./src/common/Routes');
 const cookieParser = require('cookie-parser');
+const rateLimit = require("express-rate-limit");
+const helmet = require('helmet')
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100
+});
+if (process.env.APP_ENV === 'production') {
+    app.use(limiter);
+}
 app.use(cookieParser());
 app.use(requestLogging);
+app.use(helmet());
 
 const moduleRoutes = require('./src/routes/ModuleRoute');
 routeList.push({
