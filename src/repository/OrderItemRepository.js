@@ -9,6 +9,10 @@ class OrderItemRepository extends BaseRepository {
     async getByOrderId(id) {
         return this.model.findAll({where: {order_id: id}});
     }
+
+    async findOne(orderId, productId) {
+        return this.model.findOne({where: {orderId, productId}});
+    }
 }
 
 module.exports = new OrderItemRepository();

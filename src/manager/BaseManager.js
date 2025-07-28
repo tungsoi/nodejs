@@ -4,7 +4,7 @@ class BaseManager {
     }
 
     async create(data) {
-        return await this.service.create(data);
+        return this.service.create(data);
     }
 
     async getById(id) {

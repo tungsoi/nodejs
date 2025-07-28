@@ -1,5 +1,5 @@
 const BaseValidator = require("./BaseValidator");
-const {isEmpty} = require("../utils/StringUtils");
+const globalUtils = require("../utils/global");
 
 class OrderValidator extends BaseValidator {
     validateCreate(data) {
@@ -20,9 +20,8 @@ class OrderValidator extends BaseValidator {
     }
 
     validateInitOrder(data) {
-        if (isEmpty(data.guestToken)) {
-            throw new Error("Required guestToken is empty");
-        }
+        if (globalUtils.object.isEmpty(data.guestToken)) throw new Error("Required guestToken is empty");
+        if (globalUtils.object.isEmpty(data.customer)) throw new Error("CustomerData not found");
     }
 }
 

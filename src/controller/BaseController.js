@@ -39,7 +39,7 @@ class BaseController {
             if (req.guestToken) {
                 body.guestToken = req.guestToken;
             }
-            const [updated] = await this.manager.update(id, body);
+            const updated = await this.manager.update(id, body);
             if (!updated) {
                 return BaseResponse.error(res, RESPONSE_MESSAGE.RECORD_NOT_FOUND, RESPONSE_STATUS.NOT_FOUND);
             }

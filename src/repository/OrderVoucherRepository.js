@@ -9,6 +9,10 @@ class OrderVoucherRepository extends BaseRepository {
     async getByOrderId(id) {
         return this.model.findAll({where: {order_id: id}});
     }
+
+    async findOne(orderId, voucherId) {
+        return this.model.findOne({where: {orderId, voucherId}});
+    }
 }
 
 module.exports = new OrderVoucherRepository();

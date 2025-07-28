@@ -33,9 +33,15 @@ const ORDER_STATUS = {
     DONE: "Hoàn thành"
 }
 
+const STATUS = {
+    ACTIVE: 1,
+    INACTIVE: 2
+}
+
 module.exports = {
     RESPONSE_MESSAGE,
     RESPONSE_STATUS,
     VOUCHER_TYPE,
-    ORDER_STATUS
+    ORDER_STATUS,
+    STATUS
 };

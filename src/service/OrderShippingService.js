@@ -2,7 +2,6 @@ const BaseService = require('./BaseService');
 const repository = require('../repository/OrderShippingRepository');
 const validator = require('../validator/OrderShippingValidator');
 const orderShippingDto = require('../dto/OrderShippingDto');
-const {mapToDto} = require("../utils/MappingUtils");
 
 class OrderShippingService extends BaseService {
     constructor() {
@@ -11,7 +10,7 @@ class OrderShippingService extends BaseService {
 
     async getByOrderId(id) {
         const data = await this.repository.getByOrderId(id);
-        return mapToDto(this.baseDto, data);
+        return this.convertToDto(this.baseDto, data);
     }
 }
 

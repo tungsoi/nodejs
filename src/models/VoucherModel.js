@@ -16,5 +16,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        value: {
+            type: DataTypes.NUMBER,
+            allowNull: false,
+        },
     }, process.env.DATABASE_SCHEMA);
 };

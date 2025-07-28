@@ -2,8 +2,7 @@ const BaseService = require('./BaseService');
 const repository = require('../repository/OrderVoucherRepository');
 const validator = require('../validator/OrderVoucherValidator');
 const orderVoucherDto = require('../dto/OrderVoucherDto');
-const {mapToDto} = require("../utils/MappingUtils");
-const {isEmpty} = require("../utils/ObjectUtils");
+const {isEmpty} = require("../utils/global/ObjectUtils");
 const voucherService = require('../service/VoucherService');
 
 class OrderVoucherService extends BaseService {
@@ -18,7 +17,12 @@ class OrderVoucherService extends BaseService {
                 item.voucher = await voucherService.getById(item.id);
             }
         }
-        return mapToDto(this.baseDto, data);
+        return this.convertToDto(this.baseDto, data);
+    }
+
+    async findOne(orderId, voucherId) {
+        const data = await this.repository.findOne(orderId, voucherId);
+        return this.convertToDto(this.baseDto, data);
     }
 }
 

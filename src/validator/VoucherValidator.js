@@ -1,9 +1,12 @@
-const BaseValidator = require("./BaseValidator");
+const BaseValidator = require('./BaseValidator');
+const {VOUCHER_TYPE} = require('../common/Constants');
 
 class VoucherValidator extends BaseValidator {
     validateCreate(data) {
         super.validateCreate(data);
-        // throw new Error('Category must be defined');
+        if (!data.type || !Object.keys(VOUCHER_TYPE).includes(data.type.toUpperCase())) {
+            throw new Error(`Invalid voucher type. Must be one of: ${Object.keys(VOUCHER_TYPE).join(' / ')}`);
+        }
     }
 
     validateGetById(id) {

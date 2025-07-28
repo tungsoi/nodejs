@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./src/instance/RedisInstance');
 const express = require('express');
 const {requestLogging} = require('./src/logging/RequestLogging');
 const app = express();
@@ -44,7 +45,6 @@ app.use(ROUTES.CATEGORY, categoryRoutes);
 const checkGuestToken = require('./src/middleware/CheckGuestToken');
 app.use(ROUTES.CART_ITEM, checkGuestToken, cartItemRoutes);
 app.use(ROUTES.CART, checkGuestToken, cartRoutes);
-
 app.use(ROUTES.USER, userRoutes);
 app.use(ROUTES.CUSTOMER, customerRoutes);
 app.use(ROUTES.ORDER_SHIPPING, orderShippingRoutes);

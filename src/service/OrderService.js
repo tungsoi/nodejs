@@ -2,14 +2,16 @@ const BaseService = require('./BaseService');
 const repository = require('../repository/OrderRepository');
 const validator = require('../validator/OrderValidator');
 const orderDto = require("../dto/OrderDto");
-const {mapToDto} = require('../utils/MappingUtils');
-const {calculationTotalPrice, mappingElementData} = require("../utils/OrderUtils");
+const {mappingElementData} = require("../utils/biz/OrderUtils");
 const cartService = require('../service/CartService');
 const customerService = require('../service/CustomerService');
 const orderItemService = require('../service/OrderItemService');
-const {isEmpty} = require("../utils/ObjectUtils");
+const {isEmpty} = require("../utils/global/ObjectUtils");
 const {ORDER_STATUS} = require("../common/Constants");
 const cartItemService = require("../service/CartItemService");
+
+const bizUtils = require("../utils/biz");
+const globalUtils = require("../utils/global");
 
 class OrderService extends BaseService {
     constructor() {
@@ -19,56 +21,63 @@ class OrderService extends BaseService {
     async getById(id) {
         this.validator.validateGetById(id);
         let order = await this.repository.getById(id);
-        if (isEmpty(order)) return null;
-        order = await mappingElementData(order);
-        return mapToDto(orderDto, order);
-    }
-
-    async update(id, data) {
-        this.validator.validateUpdate(id, data);
-        const order = await this.getById(id);
-        order.totalPrice = calculationTotalPrice(order);
-        return this.repository.update(id, order);
+        if (globalUtils.object.isEmpty(order)) return null;
+        return this.convertToDto(orderDto, await bizUtils.order.enrichOrderData(order));
     }
 
     async getOrderByCustomerId(id) {
         this.validator.validateGetOrderByCustomerId(id);
-        const orders = await this.repository.getOrderByCustomerId(id);
-        return mapToDto(orderDto, orders);
+        return this.convertToDto(orderDto, await this.repository.getOrderByCustomerId(id));
+    }
+
+    async update(id, data) {
+    //     this.validator.validateUpdate(id, data);
+    //
+    //     const order = await this.getById(id);
+    //     return order;
+        // if (isEmpty(order)) throw new Error('Not found order');
+        //
+        // const orderId = order.id;
+        //
+        // // items
+        // const items = Array.isArray(data.items) ? data.items : [];
+        // await Promise.all(items.map(async (item) => {
+        //     const {productId, quantity} = item;
+        //     if (!productId || quantity == null) return;
+        //     const existingItem = await orderItemService.findOne(orderId, productId);
+        //     if (quantity <= 0 && existingItem) {
+        //         return orderItemService.delete(existingItem.id);
+        //     } else if (existingItem) {
+        //         return orderItemService.update(existingItem.id, {quantity});
+        //     } else if (quantity > 0) {
+        //         return orderItemService.create({orderId, productId, quantity});
+        //     }
+        // }));
+
+        // vouchers
+        // const vouchers = Array.isArray(data.vouchers) ? data.vouchers : [];
+        // await Promise.all(vouchers.map(async (voucher) => {
+        //     const existingVoucher = await orderVoucherService.findOne(order.id, voucher.voucherId);
+        //     if (!existingVoucher) {
+        //         return await orderVoucherService.create({
+        //             orderId,
+        //             voucherId: voucher.voucherId,
+        //             appliedAmount: existingVoucher.value
+        //         });
+        //     }
+        // }))
+        // const orderUpdated = await this.getById(orderId);
+        // const totalPrice = calculationTotalPrice(orderUpdated);
+        // await this.repository.update(orderId, {totalPrice});
+        // await this.clearCache(orderId);
+        // orderUpdated.totalPrice = totalPrice;
+        // return this.convertToDto(orderDto, orderUpdated);
     }
 
     async initOrder(data) {
         this.validator.validateInitOrder(data);
-
-        const {guestToken, customer: customerData} = data;
-        if (!guestToken) throw new Error("Missing guestToken");
-        if (isEmpty(customerData)) throw new Error("CustomerData not found");
-
-        const cart = await cartService.getCartByGuestToken(guestToken);
-        if (!cart || !cart.items?.length) throw new Error("Cart or items not found");
-
-        const customer = await customerService.create(customerData);
-        if (!customer) throw new Error("Customer create failed");
-
-        const order = await this.create({
-            customerId: customer.id,
-            totalPrice: cart.totalPrice,
-            status: ORDER_STATUS.NEW
-        });
-        await cartService.delete(cart.id);
-        await Promise.all([
-            ...cart.items.map(item =>
-                orderItemService.create({
-                    orderId: order.id,
-                    productId: item.productId,
-                    quantity: item.quantity,
-                    price: item.productPrice
-                })
-            ),
-            ...cart.items.map(item => cartItemService.delete(item.id))
-        ]);
-
-        return mapToDto(orderDto, order);
+        const orderId = await bizUtils.order.routeCartToOrder(data);
+        return this.convertToDto(orderDto, await this.getById(orderId));
     }
 }
 
